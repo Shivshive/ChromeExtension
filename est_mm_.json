@@ -1,0 +1,40 @@
+{
+  "name": "chromesampleextension",
+  "version": "0.0.1",
+  "manifest_version": 3,
+  "description": "This extension is for sample practise of chrome extensions only",
+  "icons": {
+    "128": "icons/ico-1/bird128.png"
+  },
+  "action": {
+    "default_icon": {               
+      "128": "images/icon128.png"    
+    },
+    "default_title": "Click Me"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "tabs",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://*/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*/*"
+      ],
+      "css": [
+        "src/inject/inject.css"
+      ],
+      "js": [
+        "src/inject/inject.js"
+      ]
+    }
+  ]
+}
+

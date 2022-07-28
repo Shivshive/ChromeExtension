@@ -1,0 +1,5 @@
+  // "action": {
+  //   "default_icon": "icons/ico-1/bird128.png",
+  //   "default_title": "chrome-sample-extension",
+  //   "default_popup": "src/browser_action/browser_action.html"
+  // },
