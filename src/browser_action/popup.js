@@ -40,13 +40,13 @@
 
 const storageCache = {};
 const datafromjson = {};
+
 fetch('username.json',{method:'GET'}).then((d)=> d.json()).then((dt)=>{
     if(dt){
         Object.assign(datafromjson,dt);
     }
 })
             
-
 const initStorageCache = getAllStorageSyncData().then(items => {
     // Copy the data retrieved from storage into storageCache.
     if (items) {
