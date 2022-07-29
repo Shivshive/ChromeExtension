@@ -39,6 +39,13 @@
 // })();
 
 const storageCache = {};
+const datafromjson = {};
+fetch('username.json',{method:'GET'}).then((d)=> d.json()).then((dt)=>{
+    if(dt){
+        Object.assign(datafromjson,dt);
+    }
+})
+            
 
 const initStorageCache = getAllStorageSyncData().then(items => {
     // Copy the data retrieved from storage into storageCache.
@@ -59,6 +66,9 @@ $('#exampleModal').on('shown.bs.modal', function () {
         let flag = storageCache[$(ip).attr('id')];
         if (flag) {
             ip.value = storageCache[$(ip).attr('id')]
+        }
+        else{
+            ip.value = datafromjson[$(ip).attr('id')]
         }
     }
 })
