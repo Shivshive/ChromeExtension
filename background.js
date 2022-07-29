@@ -2,8 +2,7 @@ chrome.action.onClicked.addListener((tab) => {
   chrome.windows.create(
     {
       focused: true,
-      height: 500,
-      width: 500,
+      height: 800,
       url: ['src/browser_action/browser_action.html'],
       type: 'popup'
 

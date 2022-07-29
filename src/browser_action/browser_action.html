@@ -1,13 +1,12 @@
 <!doctype html>
 
 <style type="text/css">
-
-	#mainPopup {
+	/* #mainPopup {
 		padding: 10px;
 		height: 800px;
 		width: 800px;
 		font-family: Helvetica, Ubuntu, Arial, sans-serif;
-	}
+	} */
 
 	h1 {
 		font-family: 'Android7Regular';
@@ -25,13 +24,177 @@
 		font-weight: normal;
 		font-style: normal;
 		font-size: large;
-		;
+	}
+
+	#savedetails button {
+		width: 100%;
 	}
 </style>
+
+<head>
+	<title>Auto Fil Plugin</title>
+</head>
+<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+<script src="bower_components/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
 <!-- <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/android-7" type="text/css" />
 <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/spotcookie-regular" type="text/css" /> -->
-<div id="mainPopup">
+<div id="mainPopup" class="container-fluid">
 	<h1>Chome Extension</h1>
-	<p>We should not fret for what is past, nor should we be anxious about the future; men of discernment deal only with the present moment</p>
+	<p class="alert alert-success" role="alert">We should not fret for what is past, nor should we be anxious about the
+		future; men of discernment deal only with
+		the present moment</p>
+
+
+	<div class="d-flex bg-light">
+
+	</div>
+
+
+	<div class="container-fluid">
+		<!-- Button trigger modal -->
+		<button type="button" class="btn btn-outline-primary btn-sm mt-3" data-bs-toggle="modal"
+			data-bs-target="#exampleModal">
+			Change Details
+		</button>
+
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel"></h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<div class="accordion" id="accordionExample">
+							<div class="accordion-item" id="p1-acc">
+								<h2 class="accordion-header" id="p1-headingOne">
+									<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+										data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+										Profile 1
+									</button>
+								</h2>
+								<div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+									data-bs-parent="#accordionExample">
+									<div class="accordion-body ">
+										<!--form-->
+										<div class="" id="savedetails">
+											<div class="d-flex justify-content-center p-2 border bg-light">
+												<div class="d-flex flex-row flex-fill align-items-center p-0">
+													<div class="form-check form-switch ms-0">
+														<input class="form-check-input" type="checkbox" role="switch"
+															id="p1-ch">
+													</div>
+													<div class="d-flex flex-column flex-fill gx-0">
+														<div class="row mb-1 g-0">
+															<div class="col g-0">
+																<input type="email" class="form-control form-control-sm"
+																	id="p1-username" placeholder="username" disabled>
+															</div>
+														</div>
+														<div class="row mb-1 g-0">
+															<div class="col g-0">
+																<input type="email" class="form-control form-control-sm"
+																	id="p1-password" placeholder="password" disabled>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!--form-->
+									</div>
+								</div>
+							</div>
+							<div class="accordion-item" id="profile-2">
+								<h2 class="accordion-header" id="headingTwo">
+									<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+										data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+										Profile 2
+									</button>
+								</h2>
+								<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+									data-bs-parent="#accordionExample">
+									<div class="accordion-body">
+										<!--form-->
+										<div class="" id="savedetails">
+											<div class="d-flex justify-content-center p-2 border bg-light">
+												<div class="d-flex flex-row flex-fill align-items-center p-0">
+													<div class="form-check form-switch ms-0">
+														<input class="form-check-input" type="checkbox" role="switch"
+															id="p2-ch">
+													</div>
+													<div class="d-flex flex-column flex-fill gx-0">
+														<div class="row mb-1 g-0">
+															<div class="col g-0">
+																<input type="email" class="form-control form-control-sm"
+																	id="p2-username" placeholder="username" disabled>
+															</div>
+														</div>
+														<div class="row mb-1 g-0">
+															<div class="col g-0">
+																<input type="email" class="form-control form-control-sm"
+																	id="p2-password" placeholder="password" disabled>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!--form-->
+									</div>
+								</div>
+							</div>
+							<div class="accordion-item" id="profile-3">
+								<h2 class="accordion-header" id="headingThree">
+									<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+										data-bs-target="#collapseThree" aria-expanded="false"
+										aria-controls="collapseThree">
+										Profile 3
+									</button>
+								</h2>
+								<div id="collapseThree" class="accordion-collapse collapse"
+									aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+									<div class="accordion-body">
+										<!--form-->
+										<div class="" id="savedetails">
+											<div class="d-flex justify-content-center p-2 border bg-light">
+												<div class="d-flex flex-row flex-fill align-items-center p-0">
+													<div class="form-check form-switch ms-0">
+														<input class="form-check-input" type="checkbox" role="switch"
+															id="p3-ch">
+													</div>
+													<div class="d-flex flex-column flex-fill gx-0">
+														<div class="row mb-1 g-0">
+															<div class="col g-0">
+																<input type="email" class="form-control form-control-sm"
+																	id="p3-username" placeholder="username" disabled>
+															</div>
+														</div>
+														<div class="row mb-1 g-0">
+															<div class="col g-0">
+																<input type="email" class="form-control form-control-sm"
+																	id="p3-password" placeholder="password" disabled>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!--form-->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+						<!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 <script src="popup.js"></script>
