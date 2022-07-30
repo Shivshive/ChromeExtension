@@ -23,27 +23,27 @@ function showAlert(tab) {
 
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.for == 'tab') {
+  if (request.for == 'tab' && !request.inject && !request.url) {
     chrome.windows.getLastFocused({
       populate: true,
       windowTypes: ['normal']
     }, (window) => {
       console.log(window);
 
-      let [tabIds] = window.tabs.filter((v,i)=>{
-        if(v.active){
-          return true
-        }
-      }).map((v,i)=>{
-        return v.id;
+      getTabsActiveIds(window).then(([tabIds]) => {
+        console.log([tabIds]);
+
+        // chrome.scripting.executeScript({ target: { tabId: tabIds }, func: showAlert, args: [tabIds] }, function (d) {
+        //   console.log(d);
+        //   sendResponse(d);
+        // });
+
+        executeScriptFunc(tabIds, showAlert, [tabIds]).then(() => {
+          sendResponse(true);
+        })
       });
 
-      console.log(tabIds);
 
-      chrome.scripting.executeScript({target:{tabId:tabIds},func:showAlert, args:[tabIds]},function(d){
-        console.log(d);
-        sendResponse(d);
-      });
 
       // let queryOptions = {active: true,lastFocusedWindow: true };
       // chrome.tabs.query(queryOptions,function (t) {
@@ -55,8 +55,64 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     })
     return true;
   }
+  if (request.for = 'tab' && request.inject == 'demo-automation') {
+    console.log('demo automation');
+    getLastFocusedWindow().then((window)=>{
+      console.log(window);
+        getTabsActiveIds(window).then(([tabIds])=>{
+          console.log(tabIds);
+          executeScriptFile(tabIds,request.url).then(()=>{
+            sendResponse(true);
+          });
+        })
+    })
+
+    return true;
+  }
 })
 
+
+async function getLastFocusedWindow() {
+  return chrome.windows.getLastFocused({
+    populate: true,
+    windowTypes: ['normal']
+  });
+}
+
+async function executeScriptFile(tabid, file) {
+  return chrome.scripting.executeScript({ target: { tabId: tabid }, files: [file] });
+}
+
+async function executeScriptFunc(tabid, funcName, args) {
+  console.log(tabid);
+  return chrome.scripting.executeScript({ target: { tabId: tabid }, func: funcName, args: [args] });
+}
+
+function getTabsActiveIds(w) {
+  return new Promise((resolve, reject) => {
+    let tabIds = w.tabs.filter((v, i) => {
+      if (v.active) {
+        return true
+      }
+    }).map((v, i) => {
+      return v.id;
+    });
+    resolve(tabIds);
+  })
+}
+
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.data == true && request.url) {
+    getData(request.url).then((data) => sendResponse(data));
+    return true;
+  }
+})
+
+function getData(url) {
+  return new Promise((resolve, reject) => {
+    fetch(url).then((d) => { return d.json() }).then((dt) => resolve(dt));
+  })
+}
 // const users = "https://reqres.in/api/users?page=2";
 // const data_url = "./data/data.json";
 

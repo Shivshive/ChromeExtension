@@ -1,0 +1,18 @@
+{
+    "first-name" : "//input[@type='text' and @ng-model='FirstName']",
+    "last-name" : "//input[@type='text' and @ng-model='LastName']",
+    "address":"//textarea",
+    "email":"//input[@type='email']",
+    "tel":"//input[@type='tel']",
+    "male":"//input[@value='Male']",
+    "hobbies":"//input[@type='checkbox']",
+    "language":"//div[@id='msdd']",
+    "skills":"//select[@id='Skills']",
+    "countries":"//select[@id='countries']",
+    "select-country":"//select[@id='country']",
+    "year":"//select[@id=yearbox']",
+    "month":"//select[@ng-model='monthbox']",
+    "day":"//select[@id='daybox']",
+    "first-password":"//input[@id='firstpassword']",
+    "second-password":"//input[@id='secondpassword']"
+}
