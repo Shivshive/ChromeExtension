@@ -41,12 +41,12 @@
 const storageCache = {};
 const datafromjson = {};
 
-fetch('username.json',{method:'GET'}).then((d)=> d.json()).then((dt)=>{
-    if(dt){
-        Object.assign(datafromjson,dt);
+fetch('username.json', { method: 'GET' }).then((d) => d.json()).then((dt) => {
+    if (dt) {
+        Object.assign(datafromjson, dt);
     }
 })
-            
+
 const initStorageCache = getAllStorageSyncData().then(items => {
     // Copy the data retrieved from storage into storageCache.
     if (items) {
@@ -67,7 +67,7 @@ $('#exampleModal').on('shown.bs.modal', function () {
         if (flag) {
             ip.value = storageCache[$(ip).attr('id')]
         }
-        else{
+        else {
             ip.value = datafromjson[$(ip).attr('id')]
         }
     }
@@ -100,6 +100,13 @@ function getAllStorageSyncData() {
         });
     });
 }
+
+$("button#loginp1").on('click', function (e) {
+    chrome.runtime.sendMessage({ for: 'tab', url: 'src/inject/demo_automation.js', inject: 'demo-automation' }, function (data) {
+        console.log(data);
+    });
+});
+
 
 // profile-1-username
 // profile-1-password
